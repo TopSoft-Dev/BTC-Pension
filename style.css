@@ -1,0 +1,196 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Wyśrodkowanie dzieci w poziomie */
+}
+
+h1 {
+    text-align: center;
+    color: #FFD700; /* Złoty żółty */
+    margin-bottom: 15px; /* Zmniejszony odstęp do kart */
+    font-size: 1.8em; /* Pomniejszamy nagłówek */
+    width: 100%; /* Zapewniamy, że zajmuje całą szerokość */
+}
+
+.card {
+    background-color: #2c2c2c;
+    border-radius: 12px;
+    padding: 16px; /* Zmniejszony padding o kolejne 20% */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #444;
+    /* text-align: center; */ /* Usunięte wyśrodkowanie tekstu w kartach */
+}
+
+.card:hover {
+    box-shadow: 0 0 0 3px #4CAF50, 0 10px 20px rgba(0, 0, 0, 0.5); /* Podświetlenie ramki i subtelny cień */
+}
+
+h2 {
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 300;
+    color: #bbbbbb;
+}
+
+.input-group input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input[type="number"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+.result-card {
+    /* text-align: center; */ /* Usunięte wyśrodkowanie tekstu tylko w karcie wyników */
+}
+
+.result-item {
+    background-color: #222222; /* Nieco ciemniejsze tło dla pod-kart */
+    border-radius: 8px;
+    padding: 12px; /* Zmniejszony padding */
+    margin-bottom: 12px; /* Zmniejszony odstęp między pod-kartami */
+    border: 1px solid #333;
+    text-align: center; /* Wyśrodkowanie tekstu w pod-kartach wyników */
+}
+
+.result-item:last-child {
+    margin-bottom: 0; /* Brak marginesu dla ostatniej pod-karty */
+}
+
+.result-card p {
+    font-size: 1.1em;
+    /* display: flex; */ /* Cofnięte użycie flexboxa do wyśrodkowania zawartości */
+    /* justify-content: center; */ /* Cofnięte wyśrodkowanie w poziomie */
+    /* align-items: center; */ /* Cofnięte wyśrodkowanie w pionie */
+    /* margin-bottom: 10px; */ /* Usunięte, bo spacing będzie w .result-item */
+}
+
+.result-card p span {
+    font-weight: 700;
+    color: #4CAF50;
+    font-size: 1.3em; /* Zwiększamy rozmiar czcionki dla lepszej widoczności */
+}
+
+.result-card p span .suffix {
+    color: #e0e0e0; /* Kolor taki sam jak opisy */
+    font-weight: 400; /* Zwykła waga czcionki */
+    font-size: 1em; /* Ustawiamy konkretny rozmiar */
+}
+
+/* Chart.js specific styling */
+.chart-card canvas {
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 400px; /* Ograniczamy maksymalną wysokość wykresu */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .container {
+        /* flex-direction: row; */ /* Usunięte, aby h1 był zawsze na górze */
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .cards-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px; /* Taki sam odstęp jak w kontenerze */
+        justify-content: center;
+        width: 100%; /* Zajmuje całą dostępną szerokość */
+    }
+
+    .input-card,
+    .result-card {
+        flex: 1;
+        min-width: 350px;
+        max-width: calc(50% - 10px); /* 50% minus połowa gapu */
+    }
+
+    .chart-card {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        display: none; /* Ukrywamy nagłówek na urządzeniach mobilnych */
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
